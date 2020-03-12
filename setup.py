@@ -38,6 +38,11 @@ setup(
     packages=find_packages(include=['nep29']),
     tests_require=test_requirements,
     url='https://github.com/hmaarrfk/nep29',
+    entry_points={
+        'console_scripts': [
+            'nep29=nep29.nep29:main'
+        ],
+    },
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
     zip_safe=False,

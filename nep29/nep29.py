@@ -119,6 +119,24 @@ def nep29_versions(package_name, *,
     return valid_releases
 
 
+def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="NEP29 calcaulator.")
+    parser.add_argument('package', type=str, help='Package to deprecation')
+    parser.add_argument('--n_months', type=int, default=24,
+                        help='Number of months to keep supporting')
+    parser.add_argument('--n_minor', type=int, default=3,
+                        help='Number of minor versions to keep supporting')
+    args = parser.parse_args()
+
+    package = args.package
+    n_months = args.n_months
+    n_minor = args.n_minor
+    from pprint import pprint
+    pprint(nep29_versions(package, n_months=n_months, n_minor=n_minor))
+
+
+
 """
 from pprint import pprint
 print("SciPy NEP29 requirements")
