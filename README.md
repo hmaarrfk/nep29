@@ -8,6 +8,31 @@
 
 NEP29 Calculator tools
 
+Usage
+-----
+```bash
+$ nep29 --help
+usage: nep29 [-h] [--n_months N_MONTHS] [--n_minor N_MINOR] package
+
+NEP29 calcaulator.
+
+positional arguments:
+  package              Package to deprecation
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --n_months N_MONTHS  Number of months to keep supporting
+  --n_minor N_MINOR    Number of minor versions to keep supporting
+```
+
+Example:
+```bash
+$ nep29 numpy --n_months 18 --n_minor 2
+[('1.18.0', datetime.datetime(2019, 12, 22, 15, 51, 31, 822488)),
+ ('1.17.0', datetime.datetime(2019, 7, 26, 18, 35, 56, 431887)),
+ ('1.16.0', datetime.datetime(2019, 1, 14, 3, 2, 28, 527716))]
+```
+
 Features
 --------
 
