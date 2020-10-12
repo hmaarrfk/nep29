@@ -122,7 +122,7 @@ def nep29_versions(package_name, *,
 
 def main():
     import argparse
-    parser = argparse.ArgumentParser(description="NEP29 calcaulator.")
+    parser = argparse.ArgumentParser(description="NEP 29 calculator.")
     parser.add_argument('package', type=str, help='Package to deprecation')
     parser.add_argument('--n_months', type=int, default=24,
                         help='Number of months to keep supporting')
@@ -140,9 +140,9 @@ def main():
 
 """
 from pprint import pprint
-print("SciPy NEP29 requirements")
+print("SciPy NEP 29 requirements")
 pprint(nep29_versions('scipy', n_months=24, n_minor=3))
 
-print("NumPy NEP29 requirements")
+print("NumPy NEP 29 requirements")
 pprint(nep29_versions('numpy', n_months=24, n_minor=3))
 """
