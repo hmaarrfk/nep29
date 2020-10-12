@@ -92,6 +92,7 @@ def good_nep29_minor(version_dates, n_minor=3):
                                              new_major_minor)]
     return good_versions_minor
 
+
 def nep29_versions(package_name, *,
                    n_months=24, n_minor=3,
                    skip_rc=True,
@@ -132,9 +133,9 @@ def main():
     package = args.package
     n_months = args.n_months
     n_minor = args.n_minor
+    version_dates = nep29_versions(package, n_months=n_months, n_minor=n_minor)
     from pprint import pprint
-    pprint(nep29_versions(package, n_months=n_months, n_minor=n_minor))
-
+    pprint([(version, str(date)) for version, date in version_dates])
 
 
 """
