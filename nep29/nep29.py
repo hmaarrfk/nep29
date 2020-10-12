@@ -16,6 +16,7 @@ This means we have to create the union of two sets:
 Copyright Mark Harfouche 2019
 """
 from datetime import datetime, timedelta
+from prettytable import PrettyTable, MARKDOWN
 import requests
 from distutils.version import LooseVersion
 
@@ -134,8 +135,11 @@ def main():
     n_months = args.n_months
     n_minor = args.n_minor
     version_dates = nep29_versions(package, n_months=n_months, n_minor=n_minor)
-    from pprint import pprint
-    pprint([(version, str(date)) for version, date in version_dates])
+    t = PrettyTable(["version", "date"])
+    t.set_style(MARKDOWN)
+    for version, date in version_dates:
+        t.add_row([version, date])
+    print(t)
 
 
 """
