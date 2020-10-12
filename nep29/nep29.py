@@ -138,7 +138,7 @@ def main():
     t = PrettyTable(["version", "date"])
     t.set_style(MARKDOWN)
     for version, date in version_dates:
-        t.add_row([version, date])
+        t.add_row([version, date.strftime('%Y-%m-%d')])
     print(t)
 
 
