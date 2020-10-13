@@ -1,20 +1,20 @@
-# NEP29 Calculator
+# NEP 29 Calculator
 
 
-[![pypi](https://img.shields.io/pypi/v/nep29.svg)](https://pypi.python.org/pypi/nep29)
+[![PyPI](https://img.shields.io/pypi/v/nep29.svg)](https://pypi.python.org/pypi/nep29)
 [![Travis](https://img.shields.io/travis/hmaarrfk/nep29.svg)](https://travis-ci.org/hmaarrfk/nep29)
 [![Docs](https://readthedocs.org/projects/nep29/badge/?version=latest)](https://nep29.readthedocs.io/en/latest/?badge=latest)
 
 
-NEP29 Calculator tools
+[NEP 29](https://numpy.org/neps/nep-0029-deprecation_policy.html) calculator tools
 
 Usage
 -----
-```bash
+```console
 $ nep29 --help
 usage: nep29 [-h] [--n_months N_MONTHS] [--n_minor N_MINOR] package
 
-NEP29 calcaulator.
+NEP 29 calculator.
 
 positional arguments:
   package              Package to deprecation
@@ -26,12 +26,14 @@ optional arguments:
 ```
 
 Example:
-```bash
-nep29 numpy
-[('1.19.0', '2020-06-20 20:37:45.624482'),
- ('1.18.0', '2019-12-22 15:51:31.822488'),
- ('1.17.0', '2019-07-26 18:35:56.431887'),
- ('1.16.0', '2019-01-14 03:02:28.527716')]
+```console
+$ nep29 numpy
+| version |    date    |
+|---------|------------|
+|  1.19.0 | 2020-06-20 |
+|  1.18.0 | 2019-12-22 |
+|  1.17.0 | 2019-07-26 |
+|  1.16.0 | 2019-01-14 |
 ```
 
 Credits

@@ -16,6 +16,7 @@ This means we have to create the union of two sets:
 Copyright Mark Harfouche 2019
 """
 from datetime import datetime, timedelta
+from prettytable import PrettyTable, MARKDOWN
 import requests
 from distutils.version import LooseVersion
 
@@ -122,7 +123,7 @@ def nep29_versions(package_name, *,
 
 def main():
     import argparse
-    parser = argparse.ArgumentParser(description="NEP29 calcaulator.")
+    parser = argparse.ArgumentParser(description="NEP 29 calculator.")
     parser.add_argument('package', type=str, help='Package to deprecation')
     parser.add_argument('--n_months', type=int, default=24,
                         help='Number of months to keep supporting')
@@ -134,15 +135,18 @@ def main():
     n_months = args.n_months
     n_minor = args.n_minor
     version_dates = nep29_versions(package, n_months=n_months, n_minor=n_minor)
-    from pprint import pprint
-    pprint([(version, str(date)) for version, date in version_dates])
+    t = PrettyTable(["version", "date"])
+    t.set_style(MARKDOWN)
+    for version, date in version_dates:
+        t.add_row([version, date.strftime('%Y-%m-%d')])
+    print(t)
 
 
 """
 from pprint import pprint
-print("SciPy NEP29 requirements")
+print("SciPy NEP 29 requirements")
 pprint(nep29_versions('scipy', n_months=24, n_minor=3))
 
-print("NumPy NEP29 requirements")
+print("NumPy NEP 29 requirements")
 pprint(nep29_versions('numpy', n_months=24, n_minor=3))
 """
