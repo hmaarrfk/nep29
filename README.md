@@ -6,7 +6,7 @@
 [![Docs](https://readthedocs.org/projects/nep29/badge/?version=latest)](https://nep29.readthedocs.io/en/latest/?badge=latest)
 
 
-NEP 29 Calculator tools
+[NEP 29](https://numpy.org/neps/nep-0029-deprecation_policy.html) calculator tools
 
 Usage
 -----
