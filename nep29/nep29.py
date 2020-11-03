@@ -51,8 +51,19 @@ def get_versions_dates(package_name, skip_rc=True):
             if item['packagetype'] == 'sdist':
                 if skip_rc and 'rc' in k:
                     continue
-                date = datetime.strptime(item['upload_time_iso_8601'],
-                                         '%Y-%m-%dT%H:%M:%S.%fZ')
+                upload_time = item['upload_time_iso_8601']
+                for format in ['%Y-%m-%dT%H:%M:%S.%fZ',
+                               '%Y-%m-%dT%H:%M:%SZ']:
+                    try:
+                        date = datetime.strptime(upload_time, format)
+                        break
+                    except ValueError:
+                        pass
+                else:
+                    raise ValueError(
+                        f"Could not convert {upload_time} into a standard "
+                        "datetime object")
+
                 release_dates.append((k, date))
 
     release_dates.sort(key=lambda x: x[1], reverse=True)
