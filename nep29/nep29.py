@@ -134,7 +134,13 @@ def nep29_versions(package_name, *,
 
 def main():
     import argparse
-    parser = argparse.ArgumentParser(description="NEP 29 calculator.")
+    parser = argparse.ArgumentParser(
+            description="NEP 29 calculator.",
+            epilog=(
+                "For more information, see "
+                "https://numpy.org/neps/nep-0029-deprecation_policy.html"
+            ),
+            formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('package', type=str, help='Package to deprecation')
     parser.add_argument('--n_months', type=int, default=24,
                         help='Number of months to keep supporting')

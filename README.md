@@ -21,8 +21,10 @@ positional arguments:
 
 optional arguments:
   -h, --help           show this help message and exit
-  --n_months N_MONTHS  Number of months to keep supporting
-  --n_minor N_MINOR    Number of minor versions to keep supporting
+  --n_months N_MONTHS  Number of months to keep supporting (default: 24)
+  --n_minor N_MINOR    Number of minor versions to keep supporting (default: 3)
+
+For more information, see https://numpy.org/neps/nep-0029-deprecation_policy.html
 ```
 
 Example:
