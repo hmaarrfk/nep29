@@ -19,12 +19,13 @@ from datetime import datetime, timedelta
 from prettytable import PrettyTable, MARKDOWN
 import requests
 from distutils.version import LooseVersion
+from packaging.version import Version
 
 
 def major_minor_version(version):
     """Given a version string, returns the major and minor version a tuple"""
-    split = version.split('.')
-    return int(split[0]), int(split[1])
+    version = Version(version)
+    return version.major, version.minor
 
 
 def keep_oldest_minor_only(version_dates):
