@@ -18,14 +18,13 @@ Copyright Mark Harfouche 2019
 from datetime import datetime, timedelta
 from prettytable import PrettyTable, MARKDOWN
 import requests
-from distutils.version import LooseVersion
 from packaging.version import Version
 
 
 def major_minor_version(version):
     """Given a version string, returns the major and minor version a tuple"""
-    version = Version(version)
-    return version.major, version.minor
+    # version = Version(version)
+    return version.epoch, version.major, version.minor
 
 
 def keep_oldest_minor_only(version_dates):
@@ -47,10 +46,13 @@ def get_versions_dates(package_name, skip_rc=True):
     release_dates = []
     for k, v in response['releases'].items():
         # print(k)
+        # NOTE: for a version that doesn't comply to PEP 440, this will
+        # raise packaging.version.InvalidVersion:
+        version = Version(k)
         for item in v:
             # print(item['packagetype'])
             if item['packagetype'] == 'sdist':
-                if skip_rc and 'rc' in k:
+                if skip_rc and version.is_prerelease:
                     continue
                 upload_time = item['upload_time_iso_8601']
                 for format in ['%Y-%m-%dT%H:%M:%S.%fZ',
@@ -65,7 +67,7 @@ def get_versions_dates(package_name, skip_rc=True):
                         f"Could not convert {upload_time} into a standard "
                         "datetime object")
 
-                release_dates.append((k, date))
+                release_dates.append((version, date))
 
     release_dates.sort(key=lambda x: x[1], reverse=True)
     return release_dates
@@ -129,7 +131,7 @@ def nep29_versions(package_name, *,
                       for vd, good in zip(version_dates, good_indicator)
                       if good]
 
-    valid_releases.sort(key=lambda x: LooseVersion(x[0]), reverse=True)
+    valid_releases.sort(reverse=True)
     return valid_releases
 
 
