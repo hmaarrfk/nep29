@@ -1,5 +1,9 @@
 # History
 
+## Unreleased
+
+* Add support for pre-release packages that don't use a dot to separate the pre-release signifier.
+
 ## 0.0.5 (2020-10-13)
 
 * Use pretty table for better formatting.
