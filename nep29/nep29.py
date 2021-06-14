@@ -56,7 +56,9 @@ def get_versions_dates(package_name, skip_rc=True):
             if item['packagetype'] == 'sdist':
                 if version.is_prerelease:
                     if skip_rc or not version.pre[0] == 'rc':
+                        # skip unless we do not skip RCs and this is RC
                         continue
+                # alt: interpret skip_rc as allow any prerelease (e.g, betas)
                 # if skip_rc and version.is_prerelease:
                     # continue
                 upload_time = item['upload_time_iso_8601']
@@ -118,7 +120,7 @@ def nep29_versions(package_name, *,
                    skip_rc=True,
                    release_date=None,
                    consider_first_minor_only=True):
-    version_dates = get_versions_dates(package_name, skip_rc=True)
+    version_dates = get_versions_dates(package_name, skip_rc=skip_rc)
     if consider_first_minor_only:
         version_dates = keep_oldest_minor_only(version_dates)
     good_nep29_date_indicator = good_nep29_date(version_dates,
