@@ -22,9 +22,11 @@ from packaging.version import Version
 
 
 def major_minor_version(version):
-    """Given a version string, returns the major and minor version a tuple"""
-    # version = Version(version)
-    return version.epoch, version.major, version.minor
+    """Given a version, returns the tuple epoch, major, minor"""
+    # version.release works in either packaging 19 or 20
+    # as of packaging 20+, can use version.major, version.minor instead
+    major, minor = version.release[:2]
+    return version.epoch, major, minor
 
 
 def keep_oldest_minor_only(version_dates):
@@ -52,8 +54,11 @@ def get_versions_dates(package_name, skip_rc=True):
         for item in v:
             # print(item['packagetype'])
             if item['packagetype'] == 'sdist':
-                if skip_rc and version.is_prerelease:
-                    continue
+                if version.is_prerelease:
+                    if skip_rc or not version.pre[0] == 'rc':
+                        continue
+                # if skip_rc and version.is_prerelease:
+                    # continue
                 upload_time = item['upload_time_iso_8601']
                 for format in ['%Y-%m-%dT%H:%M:%S.%fZ',
                                '%Y-%m-%dT%H:%M:%SZ']:
