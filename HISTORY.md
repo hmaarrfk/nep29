@@ -1,6 +1,6 @@
 # History
 
-## Unreleased
+## 0.0.6 (2021-06-16)
 
 * Add support for pre-release packages that don't use a dot to separate the pre-release signifier.
 
