@@ -1,5 +1,9 @@
 # History
 
+## 0.0.9 (2021-11-17)
+
+* Retrigger failed build due to travis.org migration.
+
 ## 0.0.8 (2021-06-16)
 
 * Add support for pre-release packages that don't use a dot to separate the pre-release signifier.
