@@ -21,6 +21,24 @@ import requests
 from packaging.version import Version
 
 
+def get_python_versions_dates():
+    # Python releases for 3.X.0 are hard-coded since they can't be obtained
+    # from PyPI (only concerned with X>=5)
+    format = "%Y-%m-%d"
+    python_releases = {
+        '3.5.0': '2015-09-13',
+        '3.6.0': '2016-12-23',
+        '3.7.0': '2018-06-27',
+        '3.8.0': '2019-10-14',
+        '3.9.0': '2020-10-05',
+        '3.10.0': '2020-10-04',
+    }
+    release_dates = [(Version(v), datetime.strptime(d, format))
+                     for v, d in python_releases.items()]
+    release_dates.sort(key=lambda x: x[1], reverse=True)
+    return release_dates
+
+
 def major_minor_version(version):
     """Given a version, returns the tuple epoch, major, minor"""
     # version.release works in either packaging 19 or 20
@@ -43,6 +61,9 @@ def keep_oldest_minor_only(version_dates):
 
 
 def get_versions_dates(package_name, skip_rc=True):
+    if package_name == 'python':
+        return get_python_versions_dates()
+
     r = requests.get(f"https://pypi.org/pypi/{package_name}/json")
     response = r.json()
     release_dates = []
