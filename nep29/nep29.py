@@ -31,7 +31,7 @@ def get_python_versions_dates():
         '3.7.0': '2018-06-27',
         '3.8.0': '2019-10-14',
         '3.9.0': '2020-10-05',
-        '3.10.0': '2020-10-04',
+        '3.10.0': '2021-10-04',
     }
     release_dates = [(Version(v), datetime.strptime(d, format))
                      for v, d in python_releases.items()]
