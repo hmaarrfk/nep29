@@ -2,8 +2,7 @@
 
 
 [![PyPI](https://img.shields.io/pypi/v/nep29.svg)](https://pypi.python.org/pypi/nep29)
-[![Travis](https://img.shields.io/travis/hmaarrfk/nep29.svg)](https://travis-ci.org/hmaarrfk/nep29)
-[![Docs](https://readthedocs.org/projects/nep29/badge/?version=latest)](https://nep29.readthedocs.io/en/latest/?badge=latest)
+[![Travis](https://img.shields.io/travis/hmaarrfk/nep29.svg)](https://travis-ci.com/hmaarrfk/nep29)
 
 
 [NEP 29](https://numpy.org/neps/nep-0029-deprecation_policy.html) calculator tools
