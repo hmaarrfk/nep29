@@ -1,5 +1,9 @@
 # History
 
+## 0.0.10 (2021-12-30)
+
+* Add versioneer.py to the source distribution.
+
 ## 0.0.9 (2021-11-17)
 
 * Retrigger failed build due to travis.org migration.
