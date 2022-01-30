@@ -3,10 +3,8 @@ include CONTRIBUTING.md
 include HISTORY.md
 include LICENSE
 include README.md
-include versioneer.py
 
 recursive-exclude * __pycache__
 recursive-exclude * *.py[co]
 
 recursive-include docs *.rst conf.py Makefile make.bat *.jpg *.png *.gif
-include nep29/_version.py
