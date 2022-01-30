@@ -52,7 +52,7 @@ setup(
     include_package_data=True,
     keywords='nep29',
     name='nep29',
-    packages=find_packages(include=['nep29']),
+    packages=find_packages(),
     tests_require=test_requirements,
     url='https://github.com/hmaarrfk/nep29',
     entry_points={
