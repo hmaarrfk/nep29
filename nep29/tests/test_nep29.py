@@ -49,7 +49,7 @@ def _nep29_versions_test(request_mock, expected, *args, **kwargs):
 
 
 @pytest.mark.parametrize('releases,expected', [
-    #NOTE: for these tests we patch so that today is 2021-01-01, midnight.
+    # NOTE: for these tests we patch so that today is 2021-01-01, midnight.
     # All mock releases are at midnight GMT.
     (
         # default: include up to 3 minor versions if released long ago
