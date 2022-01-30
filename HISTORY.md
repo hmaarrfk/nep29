@@ -1,5 +1,9 @@
 # History
 
+## 0.0.15 (2022-01-30)
+
+* Use miniver instead of versioneer.
+
 ## 0.0.10 (2021-12-30)
 
 * Add versioneer.py to the source distribution.
