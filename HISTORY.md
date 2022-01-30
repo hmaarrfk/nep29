@@ -1,5 +1,9 @@
 # History
 
+## 0.0.16 (2022-01-30)
+
+* Add tests back to distribution.
+
 ## 0.0.15 (2022-01-30)
 
 * Use miniver instead of versioneer.
