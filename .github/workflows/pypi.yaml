@@ -2,9 +2,7 @@
 name: Publish Python 🐍 distributions 📦 to PyPI and TestPyPI
 
 on:
-  push:
-    branches:
-        - main
+  - push
 
 jobs:
   build-n-publish:
@@ -23,7 +21,9 @@ jobs:
       run: python -m pip install build --user
     - name: Build a binary wheel and a source tarball
       run: python -m build --sdist --wheel --outdir dist/ .
-    - name: Publish package
+    - name: See github.ref
+      run: "echo github.ref: ${{ github.ref }}"
+    - name: Publish distribution 📦 to PyPI
       if: startsWith(github.ref, 'refs/tags')
       uses: pypa/gh-action-pypi-publish@master
       with:
