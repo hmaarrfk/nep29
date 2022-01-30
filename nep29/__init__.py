@@ -5,7 +5,11 @@ __email__ = 'mark.harfouche@gmail.com'
 
 from .nep29 import nep29_versions
 
+__all__ = [
+    'nep29_versions',
+]
 
-from ._version import get_versions
-__version__ = get_versions()['version']
-del get_versions
+
+from . import _version
+__version__ = _version.get_versions()['version']
+del _version
