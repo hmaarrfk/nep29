@@ -1,2 +1,3 @@
 nep29/_version.py export-subst
 
+nep29/_static_version.py export-subst
