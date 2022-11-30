@@ -91,8 +91,15 @@ def test_nep29_versions_allow_rc():
     _nep29_versions_test(releases, expected, skip_rc=False)
 
 
-def test_pandas():
+@pytest.mark.parametrize('package', [
     # Pre-release information can be included as letters
     # not seperated by a '.' from the version number
     # the pandas package uses this notation.
-    nep29_versions('pandas')
+    'pandas',
+    # h5py contains a pre-release
+    # With something like an invalid version
+    #       Invalid version: '1.3.0.dev-r634'
+    'h5py',
+])
+def test_pypi_package(package):
+    nep29_versions(package)
