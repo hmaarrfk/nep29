@@ -1,5 +1,9 @@
 # History
 
+## 0.0.17 (2022-11-29)
+
+* Skip invalid versions instead of erroring.
+
 ## 0.0.16 (2022-01-30)
 
 * Add tests back to distribution.

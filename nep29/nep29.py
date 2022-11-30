@@ -18,7 +18,7 @@ Copyright Mark Harfouche 2019
 from datetime import datetime, timedelta
 from prettytable import PrettyTable, MARKDOWN
 import requests
-from packaging.version import Version
+from packaging.version import Version, InvalidVersion
 
 
 def major_minor_version(version):
@@ -47,12 +47,13 @@ def get_versions_dates(package_name, skip_rc=True):
     response = r.json()
     release_dates = []
     for k, v in response['releases'].items():
-        # print(k)
         # NOTE: for a version that doesn't comply to PEP 440, this will
         # raise packaging.version.InvalidVersion:
-        version = Version(k)
+        try:
+            version = Version(k)
+        except InvalidVersion:
+            pass
         for item in v:
-            # print(item['packagetype'])
             if item['packagetype'] == 'sdist':
                 if version.is_prerelease:
                     if skip_rc or not version.pre[0] == 'rc':
